@@ -1,0 +1,40 @@
+---
+title: "Inbreeding and Coancestry Coefficient Estimators"
+author: "Seth Temple"
+date: "November 10, 2019"
+output: html_document
+---
+
+```{r}
+setwd('~/UW/Student/STAT 551/H')
+source('vcf4popgen.R')
+source('inbr&knshp_est.R')
+source('beta_dosage.R') # https://github.com/jgx65/hierfstat/blob/master/R/beta_dosage.R
+```
+
+```{r}
+data <- vcf_preproc('H2/chr22_jpt.vcf')
+```
+
+Runtime experiment for inbr&knshp_est.R
+```{r}
+start <- Sys.time()
+BETAS <- fBETA(data$d0, data$d1)
+end <- Sys.time()
+print(end - start)
+```
+
+Runtime experiment for beta_dosage.R
+```{r}
+start <- Sys.time()
+betas <- beta.dosage(t(data$d0))
+end <- Sys.time()
+print(end - start)
+```
+
+Accuracy check
+```{r}
+BETAS <- round(BETAS, 4)
+betas <- round(betas, 4)
+mean(BETAS == betas)
+```
