@@ -2,7 +2,9 @@
 title: "Inbreeding and Coancestry Coefficient Estimators"
 author: "Seth Temple"
 date: "November 10, 2019"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r}
@@ -16,7 +18,7 @@ source('beta_dosage.R') # https://github.com/jgx65/hierfstat/blob/master/R/beta_
 ```
 
 ```{r}
-data <- vcf_preproc('H2/chr22_jpt_maf0.05/chr22_jpt_maf0.05.vcf')
+data <- vcf_preproc('H2/chr22_jpt/chr22_jpt.vcf')
 ```
 
 ```{r}
@@ -56,7 +58,7 @@ gcta_grm <- gcta_kin + diag(gcta_inbr)
 
 Accuracy check
 ```{r}
-GRM <- read_GRMBin('~/UW/Student/STAT 551/H/H2/chr22_jpt_maf0.05/chr22_jpt_maf0.05.grm')
+GRM <- read_GRMBin('~/UW/Student/STAT 551/H/H2/chr22_jpt/chr22_jpt.grm')
 GRM <- GRM - diag(diag(GRM))
 GRM[1:5,1:5] - gcta_kin[1:5,1:5]
 ```
@@ -64,7 +66,7 @@ GRM[1:5,1:5] - gcta_kin[1:5,1:5]
 Accuracy check
 ```{r}
 custom_hom <- fhom(data$a1, data$a2, allele_freq)
-plink_hom <- read.table('~/UW/Student/STAT 551/H/H2/chr22_jpt_maf0.05/chr22_jpt_maf0.05.het',
+plink_hom <- read.table('~/UW/Student/STAT 551/H/H2/chr22_jpt/chr22_jpt.het',
                         header = TRUE)$F
 mean(custom_hom - plink_hom) # rounding error
 ```
