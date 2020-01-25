@@ -5,7 +5,6 @@
 Command line: python fna_to_fasta.py input output #lines
 '''
 
-
 from sys import argv
 fna = open(str(argv[1]),'r')
 fasta = open(str(argv[2]),'w')
