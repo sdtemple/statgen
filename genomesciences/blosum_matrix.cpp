@@ -1,3 +1,6 @@
+// Blosum Matrix
+// (n) Seth Temple (e) sdtemple at uw dot edu
+
 #include<iostream>
 #include<sstream>
 #include<fstream>
