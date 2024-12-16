@@ -1,0 +1,5 @@
+Homework solutions using C++ required careful management of computer memory and especially quick computation.
+
+Introduction to protein and DNA sequence analysis and molecular evolution, including probabilistic models of sequences and of sequence evolution (hidden Markov models), computational gene identification, pairwise sequence comparison, and and multiple sequence alignment (dynamic programming). These represent the central computational approaches for interpreting genomes.
+
+http://bozeman.mbt.washington.edu/compbio/mbt599/
